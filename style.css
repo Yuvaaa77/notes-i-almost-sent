@@ -29,6 +29,26 @@ html, body {
   inset: 0;
   z-index: 0;
   background:
+    .bg-rose-motif {
+  position: fixed;
+  top: 10%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  fill: none;
+  stroke: rgba(199,165,78,0.25);
+  stroke-width: 1.2;
+  filter: blur(0.3px);
+  opacity: 0.35;
+  z-index: 1;
+  animation: roseDrift 40s linear infinite;
+}
+
+@keyframes roseDrift {
+  from { transform: rotate(0deg) translateY(0); }
+  to   { transform: rotate(360deg) translateY(-40px); }
+}
+
     linear-gradient(135deg, var(--peacock), var(--peacock-dark)),
     repeating-linear-gradient(
       45deg,
