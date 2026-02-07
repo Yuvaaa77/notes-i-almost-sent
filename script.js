@@ -1,44 +1,15 @@
-/* -------------------------
-   NOTES DATA
-   ------------------------- */
-const notesData = [
-  {
-    date: "Jan 20, 2026",
-    text: "Today wasn’t special. But something about you crossed my mind quietly.",
-    image: "",
-    audio: ""
-  },
-  {
-    date: "Jan 20, 2026",
-    text: "I almost typed your name today. Almost.",
-    image: "",
-    audio: ""
-  }
-];
+let roses = Number(localStorage.getItem("roses") || 0);
 
-/* -------------------------
-   GROUP BY DATE
-   ------------------------- */
-const grouped = {};
-notesData.forEach(note => {
-  if (!grouped[note.date]) grouped[note.date] = [];
-  grouped[note.date].push(note);
-});
+const roseCountEl = document.querySelector(".rose-count");
 
-/* -------------------------
-   RENDER NOTES
-   ------------------------- */
-const timeline = document.getElementById("timeline");
+updateRose();
 
-Object.keys(grouped).forEach(date => {
-  const group = document.createElement("div");
-  group.className = "date-group";
+function addRose() {
+  roses++;
+  localStorage.setItem("roses", roses);
+  updateRose();
+}
 
-  group.innerHTML = `
-    <div class="date-title">${date}</div>
-    <div class="notes-row">
-      ${grouped[date].map(n => `
-        <div class="note">
-          <div class="note-text">${n.text}</div>
-          ${n.image ? `<img src="${n.image}">` : ""}
-          ${n.audio ? `<audio controls src="${n.audio}"></audio>` :
+function updateRose() {
+  roseCountEl.textContent = roses;
+}
