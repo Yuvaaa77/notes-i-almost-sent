@@ -22,19 +22,19 @@ body {
   overflow-x: hidden;
 }
 
-/* BACKGROUND SCENE */
+/* BACKGROUND SCENE / MOTIFS */
 .scene {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 20%, rgba(199,165,78,0.18), transparent 45%),
+    radial-gradient(circle at 20% 25%, rgba(199,165,78,0.18), transparent 45%),
     radial-gradient(circle at 80% 70%, rgba(194,51,119,0.14), transparent 50%),
     repeating-linear-gradient(
       45deg,
-      rgba(255,255,255,0.025),
-      rgba(255,255,255,0.025) 1px,
+      rgba(255,255,255,0.03),
+      rgba(255,255,255,0.03) 1px,
       transparent 1px,
       transparent 6px
     );
@@ -52,20 +52,111 @@ main {
 .site-header {
   background: rgba(39,109,182,0.55);
   backdrop-filter: blur(10px);
-  padding: 32px;
-  border-radius: 28px;
-  margin-bottom: 80px;
+  padding: 36px;
+  border-radius: 30px;
+  margin-bottom: 90px;
 }
 
 h1 {
   font-family: 'Caveat', cursive;
-  font-size: 3.4rem;
+  font-size: 3.6rem;
   color: var(--antique-gold);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .description {
   font-style: italic;
   font-size: 1rem;
-  line-height: 1.8;
-  color: #
+  line-height: 1.85;
+  color: #eef5fb;
+}
+
+/* DATE GROUP */
+.date-group {
+  margin-bottom: 70px;
+}
+
+.date-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  color: var(--muted-teal);
+  margin-bottom: 20px;
+}
+
+/* NOTES ROW (SIDE SCROLL) */
+.notes-row {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+}
+
+/* NOTE CARD */
+.note {
+  min-width: 340px;
+  background: linear-gradient(
+    180deg,
+    rgba(244,227,178,0.98),
+    rgba(244,227,178,0.92)
+  );
+  padding: 30px;
+  border-radius: 30px;
+  border: 1px solid rgba(199,165,78,0.5);
+
+  box-shadow:
+    0 20px 55px rgba(0,0,0,0.32),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.note:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow:
+    0 38px 110px rgba(0,0,0,0.38),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+/* NOTE CONTENT */
+.note-text {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 16px;
+  color: var(--deep-violet);
+}
+
+/* MEDIA */
+.note img,
+.note video {
+  width: 100%;
+  border-radius: 16px;
+  margin: 14px 0;
+}
+
+.note audio {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* ROSE COUNTER */
+.rose-counter {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--antique-gold);
+  opacity: 0.95;
+}
+
+/* ROSE SHORTCUT BUTTON */
+.rose-btn {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  font-size: 1.6rem;
+  border: none;
+  background: rgba(194,51,119,0.28);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  padding: 14px;
+  cursor: pointer;
+  box-shadow: 0 12px 34px rgba(0,0,0,0.35);
