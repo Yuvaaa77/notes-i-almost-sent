@@ -1,39 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notes I Almost Sent</title>
+<meta charset="UTF-8">
+<title>Notes I Almost Sent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<style>
+/* =====================
+   COLOR PALETTE
+===================== */
+:root{
+  --blue: #276DB6;        /* Royal Peacock Blue */
+  --pink: #C23377;        /* Rani Pink */
+  --violet: #602754;      /* Deep Violet */
+  --gold: #C7A54E;        /* Antique Gold */
+  --teal: #43838B;        /* Muted Teal */
+  --vanilla: #F4E3B2;
+}
 
-  <!-- BACKGROUND LAYERS -->
-  <div class="bg-fabric"></div>
-  <svg class="bg-rose-motif" viewBox="0 0 600 600">
-  <path d="M300 120
-           C220 80,140 140,180 240
-           C80 260,120 380,260 360
-           C280 440,420 440,440 340
-           C520 300,480 180,380 200
-           C360 120,300 120,300 120Z"/>
-</svg>
+/* =====================
+   GLOBAL RESET
+===================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  <div class="bg-motifs"></div>
+body{
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top right, #2e7cc9, var(--blue));
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
 
-  <!-- ROSE TOGGLE -->
-  <button class="rose-toggle" onclick="addRose()">
-    <span class="rose-icon">🌹</span>
-    <span class="rose-count">0</span>
-  </button>
+/* =====================
+   FABRIC WEAVE BACKGROUND
+===================== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.02) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  z-index:0;
+}
 
-  <!-- CONTENT WILL COME LATER -->
-  <main></main>
+/* =====================
+   ROSE MOTIF SVG
+===================== */
+.rose-motif{
+  position:fixed;
+  width:620px;
+  height:620px;
+  top:8%;
+  left:-12%;
+  opacity:0.25;
+  z-index:0;
+  animation: drift 50s linear infinite;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+@keyframes drift{
+  from{transform:rotate(0deg) translateY(0);}
+  to{transform:rotate(360deg) translateY(-60px);}
+}
+
+/* =====================
+   HEADER
+===================== */
+header{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:90px 20px 40px;
+}
+
+header h1{
+  font-family:'Caveat', cursive;
+  font-size:3.4rem;
+  color:var(--gold);
+}
+
+header p{
+  margin-top:10px;
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  opacity:0.85;
+}
+
+/* =====================
+   DESCRIPTION BLOCK
+===================== */
+.description{
+  max-width:900px;
+  margin:60px auto;
+  padding:50px;
+  border-radius:36px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  box-shadow:0 40px 120px rgba(0,0,0,0.35);
+  z-index:2;
+  position:relative;
+}
+
+.description p{
+  font-family:'Playfair Display', serif;
+  font-size:1.15rem;
+  line-height:1.9;
+  co
