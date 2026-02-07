@@ -1,153 +1,282 @@
-:root {
-  --peacock-blue: #276DB6;
-  --vanilla: #F4E3B2;
-  --antique-gold: #C7A54E;
-  --deep-violet: #602754;
-  --shadow-soft: rgba(0,0,0,0.25);
+/* ======================================================
+   1. ROOT — LOCKED PALETTE (DO NOT TOUCH)
+====================================================== */
+:root{
+  --peacock:#276DB6;
+  --peacock-deep:#1f578f;
+  --gold:#C7A54E;
+  --cream:#F4E3B2;
+  --violet:#602754;
+  --pink:#C23377;
+
+  --ink:#3b1c2a;
 }
 
-* {
-  box-sizing: border-box;
+/* ======================================================
+   2. RESET & BASE
+====================================================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  font-family: 'Playfair Display', serif;
+html,body{
+  font-family:'Inter',sans-serif;
+  background:var(--peacock);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ======================================================
+   3. BACKGROUND MOTIFS — SOLVED PROPERLY
+   (THIS IS THE PART YOU KEPT ASKING FOR)
+====================================================== */
+
+/* BASE FABRIC */
+body{
+  position:relative;
+}
+
+/* SAREE + ROSE PATTERN LAYER */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url("background.png"); /* YOUR AI IMAGE */
+  background-repeat:repeat;
+  background-size:380px;        /* NOT TOO BIG, NOT TOO SMALL */
+  opacity:0.22;                 /* VISIBLE BUT NOT HEAVY */
+  z-index:-3;
+  pointer-events:none;
+}
+
+/* DEPTH + VIGNETTE */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
   background:
-    url("background.png") center/cover fixed,
-    linear-gradient(135deg, #1f5fa8, #2c7ad6);
-  min-height: 100vh;
-  color: #2a1b1b;
+    radial-gradient(
+      circle at top,
+      rgba(255,255,255,0.14),
+      rgba(0,0,0,0.45)
+    );
+  z-index:-2;
+  pointer-events:none;
 }
 
-/* Subtle overlay to soften motif */
-.bg-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(2px);
-  z-index: -1;
+/* ======================================================
+   4. HEADER
+====================================================== */
+.header{
+  text-align:center;
+  padding:90px 20px 40px;
 }
 
-/* Layout */
-.page {
-  max-width: 900px;
-  margin: auto;
-  padding: 80px 24px 140px;
+.site-title{
+  font-family:'Handlee',cursive;
+  font-size:3.2rem;
+  color:var(--gold);
+  text-shadow:0 14px 40px rgba(0,0,0,.45);
 }
 
-/* Hero */
-.hero h1 {
-  font-family: 'Handlee', cursive;
-  font-size: 3.2rem;
-  color: var(--antique-gold);
-  text-align: center;
-  margin-bottom: 8px;
+.site-tagline{
+  margin-top:10px;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:rgba(255,255,255,.75);
 }
 
-.subtitle {
-  text-align: center;
-  color: rgba(255,255,255,0.8);
-  font-style: italic;
-}
-
-/* Intro */
-.intro {
-  background: rgba(39,109,182,0.9);
-  color: white;
-  padding: 28px;
-  border-radius: 22px;
-  margin: 48px 0;
-  box-shadow: 0 30px 60px var(--shadow-soft);
-}
-
-/* Notes */
-.notes-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-/* Note Card */
-.note-card {
-  background: var(--vanilla);
-  border-radius: 28px;
-  padding: 26px 30px;
+/* ======================================================
+   5. DESCRIPTION CARD
+====================================================== */
+.description{
+  max-width:880px;
+  margin:40px auto 90px;
+  padding:48px 56px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+  border-radius:36px;
   box-shadow:
-    0 25px 50px rgba(0,0,0,0.25),
-    inset 0 0 0 2px var(--antique-gold);
-  transform: perspective(1200px) translateZ(0);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  position: relative;
+    0 45px 140px rgba(0,0,0,.45),
+    inset 0 0 0 2px rgba(199,165,78,.35);
 }
 
-.note-card:hover {
-  transform: perspective(1200px) translateY(-14px) translateZ(40px);
+.description p{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  line-height:1.9;
+}
+
+/* ======================================================
+   6. NOTES WRAPPER — IMPORTANT FOR 3D
+====================================================== */
+.notes{
+  max-width:900px;
+  margin:auto;
+  padding-bottom:200px;
+  display:flex;
+  flex-direction:column;
+  gap:90px;
+
+  perspective:1600px;     /* THIS ENABLES REAL DEPTH */
+  overflow:visible;       /* PREVENTS CUTTING */
+}
+
+/* ======================================================
+   7. DATE GROUP
+====================================================== */
+.date-group{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+  overflow:visible;
+}
+
+.date-label{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  color:rgba(255,255,255,.65);
+  padding-left:18px;
+}
+
+/* ======================================================
+   8. SIDEWAYS STACK (INSTAGRAM STORY STYLE)
+====================================================== */
+.notes-row{
+  display:flex;
+  gap:24px;
+  padding-left:16px;
+  overflow:hidden;
+  transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+
+/* stack slides sideways on hover */
+.date-group:hover .notes-row{
+  transform:translateX(-120px);
+}
+
+/* ======================================================
+   9. NOTE CARD — REAL 3D OBJECT
+====================================================== */
+.note-card{
+  position:relative;
+  min-width:340px;
+  background:var(--cream);
+  color:var(--ink);
+  padding:42px 46px;
+  border-radius:42px;
+
+  transform-style:preserve-3d;
+  transition:
+    transform .65s cubic-bezier(.2,.8,.2,1),
+    box-shadow .65s ease;
+
   box-shadow:
-    0 40px 80px rgba(0,0,0,0.35);
+    0 30px 70px rgba(0,0,0,.35),
+    inset 0 0 0 2px rgba(199,165,78,.45);
 }
 
-.note-date {
-  font-family: 'Handlee', cursive;
-  color: #2c7f88;
-  margin-bottom: 12px;
+/* ONLY HOVERED NOTE LIFTS */
+.note-card:hover{
+  transform:
+    translateY(-18px)
+    translateZ(70px)
+    rotateX(4deg);
+  box-shadow:
+    0 70px 160px rgba(0,0,0,.55),
+    inset 0 0 0 2px var(--gold);
+  z-index:10;
 }
 
-.note-text {
-  font-size: 1.15rem;
-  color: var(--deep-violet);
+/* LIGHT SWEEP */
+.note-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,.55),
+    transparent 70%
+  );
+  opacity:0;
+  transition:opacity .6s ease;
 }
 
-.note-text.faint {
-  opacity: 0.6;
-  font-style: italic;
+.note-card:hover::after{
+  opacity:.45;
 }
 
-/* Media */
-.note-media {
-  margin-top: 16px;
+/* ======================================================
+   10. NOTE TEXT (FONT PAIRING YOU ASKED FOR)
+====================================================== */
+.note-text{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;
+  line-height:1.75;
+  transition:filter .4s ease;
 }
 
-audio {
-  width: 100%;
+.note-card:hover .note-text{
+  filter:contrast(1.08);
 }
 
-/* Footer */
-.note-footer {
-  margin-top: 14px;
+/* ======================================================
+   11. +X MORE INDICATOR
+====================================================== */
+.more-notes-trigger{
+  align-self:flex-start;
+  margin-left:18px;
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  border:none;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:.85rem;
+  backdrop-filter:blur(10px);
+  opacity:.85;
 }
 
-.saved {
-  background: #e8a1b6;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
+/* ======================================================
+   12. DIGITAL ROSE TOGGLE
+====================================================== */
+.rose-toggle{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  width:76px;
+  height:76px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%, #ff7aa2, var(--pink));
+  color:#fff;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:
+    0 30px 90px rgba(194,51,119,.65),
+    inset 0 0 0 3px rgba(255,255,255,.35);
+  transition:transform .3s ease;
 }
 
-/* Stacked indicator */
-.stacked {
-  background: rgba(244,227,178,0.6);
-  border-style: dashed;
-  text-align: center;
+.rose-toggle:hover{
+  transform:scale(1.15) rotate(-6deg);
 }
 
-/* Rose toggle */
-#roseToggle {
-  position: fixed;
-  right: 28px;
-  bottom: 28px;
-  background: var(--deep-violet);
-  color: white;
-  border: none;
-  border-radius: 999px;
-  padding: 14px 20px;
-  font-size: 1.1rem;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.rose-count{
+  margin-left:6px;
+  font-weight:500;
 }
 
-#roseToggle:hover {
-  transform: scale(1.12) rotate(-3deg);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+/* ======================================================
+   13. RESPONSIVE
+====================================================== */
+@media(max-width:768px){
+  .note-card{padding:32px}
+  .description{padding:34px}
+  .site-title{font-size:2.5rem}
 }
