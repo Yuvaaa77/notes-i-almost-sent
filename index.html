@@ -2,28 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes I Almost Sent</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Background -->
+  <!-- Background motifs -->
   <div class="scene"></div>
 
-  <!-- Rose Shortcut -->
-  <button class="rose-btn" onclick="addRose()">🌹</button>
+  <!-- Rose toggle -->
+  <button class="rose-btn" onclick="addRose()">🌹 0</button>
 
   <main>
 
-    <!-- HEADER -->
+    <!-- Header -->
     <header class="site-header">
       <h1>Notes I Almost Sent</h1>
-
       <p class="description">
         This started quietly. Not as a confession, not as a plan — but as a place to
         hold thoughts that kept returning. Some days it was just one line, some days
@@ -32,16 +32,12 @@
       </p>
     </header>
 
-    <!-- TIMELINE -->
+    <!-- Timeline (JS injects notes here) -->
     <section id="timeline"></section>
-
-    <!-- ROSE COUNT -->
-    <footer class="rose-counter">
-      🌹 <span id="roseCount">0</span> digital roses
-    </footer>
 
   </main>
 
+  <!-- Logic -->
   <script src="script.js"></script>
 </body>
 </html>
