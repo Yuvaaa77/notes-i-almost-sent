@@ -1,6 +1,6 @@
-/* =========================
-   COLOR PALETTE (SAREE)
-   ========================= */
+/* =====================
+   COLOR PALETTE
+   ===================== */
 :root {
   --peacock-blue: #276DB6;
   --vanilla: #F4E3B2;
@@ -10,37 +10,51 @@
   --muted-teal: #43838B;
 }
 
-/* =========================
+/* =====================
    BASE
-   ========================= */
+   ===================== */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  padding: 40px 16px;
+  padding: 48px 16px;
   font-family: Georgia, serif;
-  background-color: var(--peacock-blue);
   color: var(--deep-violet);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.08),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(0, 0, 0, 0.18),
+      transparent 45%
+    ),
+    var(--peacock-blue);
+
+  min-height: 100vh;
 }
 
-/* =========================
+/* =====================
    LAYOUT
-   ========================= */
+   ===================== */
 main {
   max-width: 620px;
   margin: 0 auto;
 }
 
-/* =========================
+/* =====================
    HEADER
-   ========================= */
+   ===================== */
 h1 {
   text-align: center;
   font-weight: normal;
   color: var(--antique-gold);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   margin-bottom: 6px;
 }
 
@@ -48,69 +62,117 @@ h1 {
   text-align: center;
   font-size: 0.9rem;
   color: var(--muted-teal);
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 }
 
-/* =========================
-   NOTE CARD
-   ========================= */
+/* =====================
+   NOTE CARD (2026 STYLE)
+   ===================== */
 .note {
-  background-color: var(--vanilla);
-  padding: 26px 24px;
-  margin-bottom: 32px;
-  border-radius: 22px;
-  border: 1.5px solid var(--antique-gold);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+  position: relative;
+
+  background: linear-gradient(
+    180deg,
+    rgba(244, 227, 178, 0.96),
+    rgba(244, 227, 178, 0.88)
+  );
+
+  padding: 32px 30px;
+  margin-bottom: 42px;
+  border-radius: 30px;
+
+  border: 1px solid rgba(199, 165, 78, 0.6);
+
+  box-shadow:
+    0 20px 42px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(6px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+.note:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 28px 58px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* =====================
+   NOTE TEXT
+   ===================== */
 .note-date {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--muted-teal);
-  margin-bottom: 12px;
+  letter-spacing: 0.6px;
+  margin-bottom: 16px;
 }
 
 .note div {
-  line-height: 1.65;
+  line-height: 1.8;
+  font-size: 1.08rem;
 }
 
-/* =========================
+/* =====================
    SAVE BUTTON
-   ========================= */
+   ===================== */
 .save-btn {
-  margin-top: 14px;
+  margin-top: 18px;
   background: none;
   border: none;
   font-size: 0.9rem;
   cursor: pointer;
   color: var(--deep-violet);
-  padding: 0;
+  opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.save-btn:hover {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .save-btn.saved {
   color: var(--rani-pink);
 }
 
-/* =========================
-   POPUP
-   ========================= */
-.popup {
+/* =====================
+   ROSE MOTIF
+   ===================== */
+.note::after {
+  content: "🌹";
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  font-size: 20px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* =====================
+   SAREE FLOW (BACKGROUND)
+   ===================== */
+body::after {
+  content: "";
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  bottom: -140px;
+  left: -90px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(199, 165, 78, 0.12),
+    rgba(194, 51, 119, 0.08)
+  );
+  filter: blur(50px);
+  pointer-events: none;
 }
 
-.popup-content {
-  background-color: var(--vanilla);
-  padding: 28px;
-  border-radius: 20px;
+/* =====================
+   ROSE COUNTER
+   ===================== */
+.rose-counter {
   text-align: center;
-  border: 1.5px solid var(--antique-gold);
-  max-width: 280px;
-}
-
-.hidden {
-  display: none;
-}
+  margin-top: 70px;
+  f
