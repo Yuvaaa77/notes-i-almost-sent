@@ -11,7 +11,7 @@
 }
 
 /* =====================
-   BASE
+   RESET
    ===================== */
 * {
   box-sizing: border-box;
@@ -19,211 +19,135 @@
 
 body {
   margin: 0;
-  padding: 48px 16px;
-  font-family: Georgia, serif;
-  color: var(--deep-violet);
-
-body {
-  margin: 0;
-  padding: 64px 20px;
-  font-family: Georgia, serif;
+  padding: 72px 20px;
+  font-family: 'Lora', serif;
   color: var(--deep-violet);
   background: var(--peacock-blue);
   min-height: 100vh;
   overflow-x: hidden;
 }
-.background-motif {
+
+/* =====================
+   BACKGROUND SCENE
+   ===================== */
+.scene {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 
   background-image:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(199,165,78,0.08),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(194,51,119,0.06),
-      transparent 45%
-    ),
-    url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 20 C130 60 160 90 180 100 C160 110 130 140 100 180 C70 140 40 110 20 100 C40 90 70 60 100 20 Z' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E");
-
-  background-repeat: repeat;
-  background-size: 600px 600px;
-}
-main {
-  position: relative;
-  z-index: 2;
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-    radial-gradient(
-      circle at bottom right,
-      rgba(0, 0, 0, 0.18),
-      transparent 45%
-    ),
-    var(--peacock-blue);
-
-  min-height: 100vh;
+    radial-gradient(circle at 15% 20%, rgba(199,165,78,0.12), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(194,51,119,0.10), transparent 50%);
 }
 
 /* =====================
    LAYOUT
    ===================== */
 main {
-  max-width: 620px;
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
   margin: 0 auto;
 }
 
 /* =====================
    HEADER
    ===================== */
+.site-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
 h1 {
-  text-align: center;
-  font-weight: normal;
+  font-family: 'Caveat', cursive;
+  font-size: 3.4rem;
+  font-weight: 500;
   color: var(--antique-gold);
-  letter-spacing: 0.6px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
-.subtitle {
-  text-align: center;
-  font-size: 0.9rem;
+.tagline {
+  font-size: 0.95rem;
+  font-style: italic;
   color: var(--muted-teal);
-  margin-bottom: 52px;
 }
 
 /* =====================
-   NOTE CARD (2026 STYLE)
+   CARD FRAME
    ===================== */
-.note {
-  .note {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(244,227,178,0.96),
-      rgba(244,227,178,0.9)
-    );
-
-  padding: 36px 34px;
-  margin: 48px 0;
-  border-radius: 32px;
-
-  border: 1px solid rgba(199,165,78,0.5);
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-
-  backdrop-filter: blur(10px);
-}
-
-.note:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 28px 58px rgba(0, 0, 0, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-/* =====================
-   NOTE TEXT
-   ===================== */
-.note-date {
-  font-size: 0.78rem;
-  color: var(--muted-teal);
-  letter-spacing: 0.6px;
-  margin-bottom: 16px;
-}
-
-.note div {
-  line-height: 1.8;
-  font-size: 1.08rem;
-}
-
-/* =====================
-   SAVE BUTTON
-   ===================== */
-.save-btn {
-  margin-top: 22px;
-  padding: 6px 14px;
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.25);
-  border: 1px solid rgba(255,255,255,0.35);
-
-  font-size: 0.8rem;
-  color: var(--deep-violet);
-
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
-}
-
-.save-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.save-btn.saved {
-  background: rgba(194,51,119,0.35);
-  color: white;
-}
-
-
-.save-btn:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.save-btn.saved {
-  color: var(--rani-pink);
-}
-
-/* =====================
-   ROSE MOTIF
-   ===================== */
-.note::after {
-  content: "🌹";
-  position: absolute;
-  bottom: 18px;
-  right: 22px;
-  font-size: 20px;
-  opacity: 0.18;
-  pointer-events: none;
-}
-
-/* =====================
-   SAREE FLOW (BACKGROUND)
-   ===================== */
-body::after {
-  content: "";
-  position: fixed;
-  bottom: -140px;
-  left: -90px;
-  width: 360px;
-  height: 360px;
-  border-radius: 50%;
+.card-frame {
+  padding: 6px;
+  border-radius: 40px;
   background: linear-gradient(
     135deg,
-    rgba(199, 165, 78, 0.12),
-    rgba(194, 51, 119, 0.08)
+    var(--antique-gold),
+    rgba(199,165,78,0.4)
   );
-  filter: blur(50px);
-  pointer-events: none;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.35);
+}
+
+/* =====================
+   NOTE
+   ===================== */
+.note {
+  background: linear-gradient(
+    180deg,
+    rgba(244,227,178,0.98),
+    rgba(244,227,178,0.92)
+  );
+
+  padding: 42px 38px;
+  border-radius: 34px;
+  position: relative;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.6),
+    0 30px 80px rgba(0,0,0,0.25);
+}
+
+/* =====================
+   NOTE DETAILS
+   ===================== */
+.note-date {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  color: var(--muted-teal);
+  margin-bottom: 18px;
+}
+
+.note-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+
+/* =====================
+   SAVE BUTTON (2026)
+   ===================== */
+.save-btn {
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: none;
+  cursor: default;
+
+  background: rgba(194,51,119,0.25);
+  color: var(--rani-pink);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 8px 22px rgba(0,0,0,0.25);
 }
 
 /* =====================
    ROSE COUNTER
    ===================== */
 .rose-counter {
+  margin-top: 60px;
   text-align: center;
-  margin-top: 70px;
-  f
+  font-size: 0.9rem;
+  color: var(--antique-gold);
+  opacity: 0.95;
+}
