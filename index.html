@@ -12,31 +12,34 @@
 </head>
 <body>
 
-  <!-- Background Scene -->
+  <!-- Background -->
   <div class="scene"></div>
 
+  <!-- Rose Shortcut -->
+  <button class="rose-btn" onclick="addRose()">🌹</button>
+
   <main>
+
+    <!-- HEADER -->
     <header class="site-header">
       <h1>Notes I Almost Sent</h1>
-      <p class="tagline">Things I wanted to say, but never did.</p>
+
+      <p class="description">
+        This started quietly. Not as a confession, not as a plan — but as a place to
+        hold thoughts that kept returning. Some days it was just one line, some days
+        it was too much to fit into words. I didn’t want to send them. I didn’t want
+        to forget them either. So I kept them here — one day at a time.
+      </p>
     </header>
 
-    <!-- Keepsake Card -->
-    <section class="card-frame">
-      <div class="note">
-        <div class="note-date">Jan 20, 2026</div>
+    <!-- TIMELINE -->
+    <section id="timeline"></section>
 
-        <div class="note-text">
-          Today wasn’t special. But something about you crossed my mind quietly.
-        </div>
-
-        <button class="save-btn saved">★ Saved</button>
-      </div>
-    </section>
-
+    <!-- ROSE COUNT -->
     <footer class="rose-counter">
-      🌹 <span id="roseCount">1</span> digital rose for you
+      🌹 <span id="roseCount">0</span> digital roses
     </footer>
+
   </main>
 
   <script src="script.js"></script>
