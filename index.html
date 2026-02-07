@@ -3,128 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <title>Notes I Almost Sent</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Fonts only (style comes later) -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
 
-  <!-- CSS will be linked later -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- =========================
-       BACKGROUND MOTIF LAYERS
-       (visual only, styled later)
-  ========================== -->
-  <div class="bg-layer motif-rose"></div>
-  <div class="bg-layer motif-saree"></div>
-  <div class="bg-layer grain-overlay"></div>
+  <!-- Background overlay -->
+  <div class="bg-overlay"></div>
 
-  <!-- =========================
-       HEADER / TITLE
-  ========================== -->
-  <header class="header">
-    <h1 class="site-title">Notes I Almost Sent</h1>
-    <p class="site-tagline">Things I wanted to say, but never did.</p>
-  </header>
+  <main class="page">
 
-  <!-- =========================
-       DESCRIPTION / ORIGIN STORY
-  ========================== -->
-  <section class="description">
-    <p>
-      This started quietly. Not as a confession, not as a plan —
-      but as a place to hold thoughts that kept returning.
-      Some days it was just one line, some days it was too much
-      to fit into words. I didn’t want to send them.
-      I didn’t want to forget them either.
-      So I kept them here — one day at a time.
-    </p>
-  </section>
+    <!-- Header -->
+    <header class="hero">
+      <h1>Notes I Almost Sent</h1>
+      <p class="subtitle">Things I wanted to say, but never did.</p>
+    </header>
 
-  <!-- =========================
-       NOTES STACK (SCROLL AREA)
-  ========================== -->
-  <main class="notes">
-
-    <!-- ===== DATE GROUP ===== -->
-    <section class="date-group">
-      <div class="date-label">Jan 20, 2026</div>
-
-      <!-- NOTE CARD -->
-      <article class="note-card">
-        <p class="note-text">
-          Today wasn’t special. But something about you
-          crossed my mind quietly.
-        </p>
-
-        <!-- OPTIONAL MEDIA SLOT (music / image / video) -->
-        <div class="note-media">
-          <!-- example: audio, image, or video -->
-          <!-- filled later -->
-        </div>
-
-        <!-- NOTE ACTIONS -->
-        <div class="note-actions">
-          <span class="note-saved">★ Saved</span>
-        </div>
-      </article>
-
-      <!-- COLLAPSED MORE NOTES -->
-      <button class="more-notes-trigger">
-        +7 more notes from this day
-      </button>
-
-      <!-- SIDE STACK (hidden by default) -->
-      <div class="side-stack">
-        <article class="note-card mini">
-          <p class="note-text">
-            You smiled and I forgot what I was thinking.
-          </p>
-        </article>
-
-        <article class="note-card mini">
-          <p class="note-text">
-            Almost texted you. Didn’t.
-          </p>
-        </article>
-      </div>
+    <!-- Description -->
+    <section class="intro">
+      <p>
+        This started quietly. Not as a confession, not as a plan —
+        but as a place to hold thoughts that kept returning.
+        Some days it was just one line, some days it was too much to fit into words.
+        I didn’t want to send them. I didn’t want to forget them either.
+        So I kept them here — one day at a time.
+      </p>
     </section>
 
-    <!-- ===== ANOTHER DATE GROUP (EXAMPLE) ===== -->
-    <section class="date-group">
-      <div class="date-label">Jan 18, 2026</div>
+    <!-- Notes Stack -->
+    <section class="notes-stack">
 
       <article class="note-card">
-        <p class="note-text">
-          I heard a song today and it felt like you.
-        </p>
+        <div class="note-date">Jan 20, 2026</div>
 
-        <div class="note-media">
-          <!-- audio slot -->
+        <div class="note-text">
+          Today wasn’t special. But something about you crossed my mind quietly.
         </div>
 
-        <div class="note-actions">
-          <span class="note-saved">★ Saved</span>
+        <!-- Media (optional) -->
+        <div class="note-media">
+          <audio controls>
+            <source src="sample.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <div class="note-footer">
+          <span class="saved">★ Saved</span>
         </div>
       </article>
+
+      <!-- Example stacked note -->
+      <article class="note-card stacked">
+        <div class="note-text faint">
+          +7 more notes written this day
+        </div>
+      </article>
+
     </section>
 
   </main>
 
-  <!-- =========================
-       DIGITAL ROSE TOGGLE
-  ========================== -->
-  <button class="rose-toggle" aria-label="Digital Roses">
-    🌹 <span class="rose-count">0</span>
+  <!-- Rose Toggle -->
+  <button id="roseToggle">
+    🌹 <span id="roseCount">1</span>
   </button>
 
-  <!-- =========================
-       SCRIPT (linked later)
-  ========================== -->
   <script src="script.js"></script>
-
 </body>
 </html>
