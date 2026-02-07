@@ -1,3 +1,6 @@
+/* =========================
+   COLOR PALETTE (SAREE)
+   ========================= */
 :root {
   --peacock-blue: #276DB6;
   --vanilla: #F4E3B2;
@@ -7,23 +10,38 @@
   --muted-teal: #43838B;
 }
 
-body {
-  font-family: 'Georgia', serif;
-  background: var(--peacock-blue);
-  color: var(--deep-violet);
-  margin: 0;
-  padding: 40px 16px;
+/* =========================
+   BASE
+   ========================= */
+* {
+  box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 40px 16px;
+  font-family: Georgia, serif;
+  background-color: var(--peacock-blue);
+  color: var(--deep-violet);
+}
+
+/* =========================
+   LAYOUT
+   ========================= */
 main {
   max-width: 620px;
-  margin: auto;
+  margin: 0 auto;
 }
+
+/* =========================
+   HEADER
+   ========================= */
 h1 {
   text-align: center;
   font-weight: normal;
   color: var(--antique-gold);
   letter-spacing: 0.5px;
+  margin-bottom: 6px;
 }
 
 .subtitle {
@@ -32,14 +50,19 @@ h1 {
   color: var(--muted-teal);
   margin-bottom: 48px;
 }
+
+/* =========================
+   NOTE CARD
+   ========================= */
 .note {
-  background: var(--vanilla);
-  padding: 24px 22px;
-  margin-bottom: 28px;
+  background-color: var(--vanilla);
+  padding: 26px 24px;
+  margin-bottom: 32px;
   border-radius: 22px;
   border: 1.5px solid var(--antique-gold);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
 }
+
 .note-date {
   font-size: 0.8rem;
   color: var(--muted-teal);
@@ -47,24 +70,47 @@ h1 {
 }
 
 .note div {
-  line-height: 1.6;
+  line-height: 1.65;
 }
+
+/* =========================
+   SAVE BUTTON
+   ========================= */
 .save-btn {
   margin-top: 14px;
   background: none;
   border: none;
-  cursor: pointer;
   font-size: 0.9rem;
+  cursor: pointer;
   color: var(--deep-violet);
+  padding: 0;
 }
 
 .save-btn.saved {
   color: var(--rani-pink);
 }
+
+/* =========================
+   POPUP
+   ========================= */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .popup-content {
-  background: var(--vanilla);
-  padding: 26px;
+  background-color: var(--vanilla);
+  padding: 28px;
   border-radius: 20px;
   text-align: center;
   border: 1.5px solid var(--antique-gold);
+  max-width: 280px;
+}
+
+.hidden {
+  display: none;
 }
