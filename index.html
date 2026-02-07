@@ -4,20 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Notes I Almost Sent</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="background-motif"></div>
+
+  <!-- Background Scene -->
+  <div class="scene"></div>
 
   <main>
-    <h1>Notes I Almost Sent</h1>
-    <p class="subtitle">written quietly, one day at a time</p>
+    <header class="site-header">
+      <h1>Notes I Almost Sent</h1>
+      <p class="tagline">Things I wanted to say, but never did.</p>
+    </header>
 
-    <div id="notes"></div>
+    <!-- Keepsake Card -->
+    <section class="card-frame">
+      <div class="note">
+        <div class="note-date">Jan 20, 2026</div>
 
-    <div class="rose-counter">
-      🌹 <span id="roseCount">0</span> digital roses for you
-    </div>
+        <div class="note-text">
+          Today wasn’t special. But something about you crossed my mind quietly.
+        </div>
+
+        <button class="save-btn saved">★ Saved</button>
+      </div>
+    </section>
+
+    <footer class="rose-counter">
+      🌹 <span id="roseCount">1</span> digital rose for you
+    </footer>
   </main>
 
   <script src="script.js"></script>
