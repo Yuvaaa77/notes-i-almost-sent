@@ -1,290 +1,153 @@
-/* ======================================================
-   ROOT — PRECISE SAREE-INSPIRED PALETTE
-====================================================== */
-:root{
-  --royal-blue:#276DB6;
-  --royal-blue-deep:#1f578f;
-  --gold:#C7A54E;
-  --cream:#F6E7B8;
-  --violet:#602754;
-  --pink:#C23377;
-
-  --paper:#f3e6cf;
-  --ink:#3b1c2a;
+:root {
+  --peacock-blue: #276DB6;
+  --vanilla: #F4E3B2;
+  --antique-gold: #C7A54E;
+  --deep-violet: #602754;
+  --shadow-soft: rgba(0,0,0,0.25);
 }
 
-/* ======================================================
-   RESET
-====================================================== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-html,body{
-  font-family:'Inter',sans-serif;
-  background:var(--royal-blue);
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* ======================================================
-   BACKGROUND MOTIFS (REAL — NOT FLAT)
-====================================================== */
-.bg-layer{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-3;
-}
-
-/* Saree weave */
-.motif-saree{
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
   background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(255,255,255,.035) 0px,
-      rgba(255,255,255,.035) 2px,
-      transparent 2px,
-      transparent 10px
-    );
+    url("background.png") center/cover fixed,
+    linear-gradient(135deg, #1f5fa8, #2c7ad6);
+  min-height: 100vh;
+  color: #2a1b1b;
 }
 
-/* Floral / rose hint */
-.motif-rose{
-  background:
-    radial-gradient(circle at 12% 18%, rgba(199,165,78,.18), transparent 40%),
-    radial-gradient(circle at 82% 78%, rgba(194,51,119,.16), transparent 42%);
+/* Subtle overlay to soften motif */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(2px);
+  z-index: -1;
 }
 
-/* Paper grain */
-.grain-overlay{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-  mix-blend-mode:overlay;
-  opacity:.35;
+/* Layout */
+.page {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 24px 140px;
 }
 
-/* ======================================================
-   HEADER
-====================================================== */
-.header{
-  text-align:center;
-  padding:90px 20px 40px;
+/* Hero */
+.hero h1 {
+  font-family: 'Handlee', cursive;
+  font-size: 3.2rem;
+  color: var(--antique-gold);
+  text-align: center;
+  margin-bottom: 8px;
 }
 
-.site-title{
-  font-family:'Pacifico',cursive;
-  font-size:3.2rem;
-  color:var(--gold);
-  letter-spacing:.5px;
-  text-shadow:0 12px 40px rgba(0,0,0,.35);
+.subtitle {
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+  font-style: italic;
 }
 
-.site-tagline{
-  margin-top:12px;
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  color:rgba(255,255,255,.7);
+/* Intro */
+.intro {
+  background: rgba(39,109,182,0.9);
+  color: white;
+  padding: 28px;
+  border-radius: 22px;
+  margin: 48px 0;
+  box-shadow: 0 30px 60px var(--shadow-soft);
 }
 
-/* ======================================================
-   DESCRIPTION CARD
-====================================================== */
-.description{
-  max-width:880px;
-  margin:40px auto 90px;
-  padding:50px 56px;
-  background:linear-gradient(
-    160deg,
-    rgba(255,255,255,.14),
-    rgba(255,255,255,.06)
-  );
-  border-radius:34px;
-  backdrop-filter:blur(20px);
+/* Notes */
+.notes-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Note Card */
+.note-card {
+  background: var(--vanilla);
+  border-radius: 28px;
+  padding: 26px 30px;
   box-shadow:
-    0 40px 120px rgba(0,0,0,.45),
-    inset 0 0 0 2px rgba(199,165,78,.35);
+    0 25px 50px rgba(0,0,0,0.25),
+    inset 0 0 0 2px var(--antique-gold);
+  transform: perspective(1200px) translateZ(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  position: relative;
 }
 
-.description p{
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;
-  line-height:1.9;
-}
-
-/* ======================================================
-   NOTES STACK
-====================================================== */
-.notes{
-  max-width:900px;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  gap:90px;
-  padding-bottom:200px;
-}
-
-/* ======================================================
-   DATE GROUP
-====================================================== */
-.date-group{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  gap:26px;
-}
-
-.date-label{
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  color:rgba(255,255,255,.65);
-  padding-left:18px;
-}
-
-/* ======================================================
-   NOTE CARD — PROPER 3D OBJECT
-====================================================== */
-.note-card{
-  position:relative;
-  background:var(--paper);
-  color:var(--ink);
-  padding:42px 48px;
-  border-radius:42px;
-  transform-style:preserve-3d;
-  transition:
-    transform .7s cubic-bezier(.16,.84,.44,1),
-    box-shadow .7s;
+.note-card:hover {
+  transform: perspective(1200px) translateY(-14px) translateZ(40px);
   box-shadow:
-    0 35px 70px rgba(0,0,0,.35),
-    inset 0 0 0 2px rgba(199,165,78,.45);
+    0 40px 80px rgba(0,0,0,0.35);
 }
 
-/* lift without clipping */
-.note-card:hover{
-  transform:translateY(-14px) scale(1.025);
-  box-shadow:
-    0 70px 160px rgba(0,0,0,.5),
-    inset 0 0 0 2px var(--gold);
+.note-date {
+  font-family: 'Handlee', cursive;
+  color: #2c7f88;
+  margin-bottom: 12px;
 }
 
-/* light sweep */
-.note-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  background:linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255,255,255,.55),
-    transparent 70%
-  );
-  opacity:0;
-  transition:opacity .6s;
+.note-text {
+  font-size: 1.15rem;
+  color: var(--deep-violet);
 }
 
-.note-card:hover::after{
-  opacity:.45;
+.note-text.faint {
+  opacity: 0.6;
+  font-style: italic;
 }
 
-/* ======================================================
-   NOTE TEXT
-====================================================== */
-.note-text{
-  font-family:'Playfair Display',serif;
-  font-size:1.25rem;
-  line-height:1.75;
-  transition:.4s;
+/* Media */
+.note-media {
+  margin-top: 16px;
 }
 
-.note-card:hover .note-text{
-  filter:contrast(1.05);
+audio {
+  width: 100%;
 }
 
-/* ======================================================
-   NOTE ACTIONS
-====================================================== */
-.note-actions{
-  margin-top:28px;
+/* Footer */
+.note-footer {
+  margin-top: 14px;
 }
 
-.note-saved{
-  display:inline-block;
-  background:var(--pink);
-  color:#fff;
-  padding:10px 20px;
-  border-radius:999px;
-  font-size:.85rem;
-  box-shadow:0 14px 36px rgba(194,51,119,.5);
+.saved {
+  background: #e8a1b6;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
 }
 
-/* ======================================================
-   +7 MORE NOTES
-====================================================== */
-.more-notes-trigger{
-  align-self:flex-start;
-  margin-left:24px;
-  background:rgba(0,0,0,.35);
-  color:#fff;
-  border:none;
-  padding:10px 18px;
-  border-radius:999px;
-  cursor:pointer;
-  backdrop-filter:blur(10px);
+/* Stacked indicator */
+.stacked {
+  background: rgba(244,227,178,0.6);
+  border-style: dashed;
+  text-align: center;
 }
 
-/* side stack */
-.side-stack{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  padding-left:30px;
+/* Rose toggle */
+#roseToggle {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  background: var(--deep-violet);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* mini cards */
-.note-card.mini{
-  min-width:260px;
-  padding:28px;
-  font-size:.9rem;
-}
-
-/* ======================================================
-   DIGITAL ROSE TOGGLE
-====================================================== */
-.rose-toggle{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  width:76px;
-  height:76px;
-  border-radius:50%;
-  background:
-    radial-gradient(circle at 30% 30%, #ff7aa2, var(--pink));
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  font-size:22px;
-  box-shadow:
-    0 30px 80px rgba(194,51,119,.6),
-    inset 0 0 0 3px rgba(255,255,255,.3);
-  transition:transform .3s ease;
-}
-
-.rose-toggle:hover{
-  transform:scale(1.15) rotate(-6deg);
-}
-
-.rose-count{
-  margin-left:6px;
-  font-weight:500;
-}
-
-/* ======================================================
-   RESPONSIVE
-====================================================== */
-@media(max-width:768px){
-  .note-card{padding:32px}
-  .description{padding:34px}
-  .site-title{font-size:2.5rem}
+#roseToggle:hover {
+  transform: scale(1.12) rotate(-3deg);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
 }
