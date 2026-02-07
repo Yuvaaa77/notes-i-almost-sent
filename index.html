@@ -1,298 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Notes I Almost Sent</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Notes I Almost Sent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- GOOGLE FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Fonts only (style comes later) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
 
-<style>
-/* =====================
-   COLOR PALETTE
-===================== */
-:root{
-  --blue: #276DB6;        /* Royal Peacock Blue */
-  --pink: #C23377;        /* Rani Pink */
-  --violet: #602754;      /* Deep Violet */
-  --gold: #C7A54E;        /* Antique Gold */
-  --teal: #43838B;        /* Muted Teal */
-  --vanilla: #F4E3B2;
-}
-
-/* =====================
-   GLOBAL RESET
-===================== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top right, #2e7cc9, var(--blue));
-  color:#fff;
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-/* =====================
-   FABRIC WEAVE BACKGROUND
-===================== */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    repeating-linear-gradient(
-      45deg,
-      rgba(255,255,255,0.02) 0px,
-      rgba(255,255,255,0.02) 1px,
-      transparent 1px,
-      transparent 6px
-    );
-  z-index:0;
-}
-
-/* =====================
-   ROSE MOTIF SVG
-===================== */
-.rose-motif{
-  position:fixed;
-  width:620px;
-  height:620px;
-  top:8%;
-  left:-12%;
-  opacity:0.25;
-  z-index:0;
-  animation: drift 50s linear infinite;
-}
-
-@keyframes drift{
-  from{transform:rotate(0deg) translateY(0);}
-  to{transform:rotate(360deg) translateY(-60px);}
-}
-
-/* =====================
-   HEADER
-===================== */
-header{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:90px 20px 40px;
-}
-
-header h1{
-  font-family:'Caveat', cursive;
-  font-size:3.4rem;
-  color:var(--gold);
-}
-
-header p{
-  margin-top:10px;
-  font-family:'Playfair Display', serif;
-  font-style:italic;
-  opacity:0.85;
-}
-
-/* =====================
-   DESCRIPTION BLOCK
-===================== */
-.description{
-  max-width:900px;
-  margin:60px auto;
-  padding:50px;
-  border-radius:36px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter: blur(18px);
-  box-shadow:0 40px 120px rgba(0,0,0,0.35);
-  z-index:2;
-  position:relative;
-}
-
-.description p{
-  font-family:'Playfair Display', serif;
-  font-size:1.15rem;
-  line-height:1.9;
-  color:#fff;
-}
-
-/* =====================
-   NOTES STACK
-===================== */
-.notes-wrapper{
-  max-width:1100px;
-  margin:80px auto;
-  padding-bottom:120px;
-  z-index:2;
-  position:relative;
-}
-
-.date-group{
-  margin-bottom:70px;
-}
-
-.date-title{
-  margin-bottom:18px;
-  font-family:'Caveat', cursive;
-  font-size:1.4rem;
-  color:var(--teal);
-}
-
-/* Horizontal stack */
-.note-row{
-  display:flex;
-  gap:26px;
-  overflow-x:auto;
-  padding-bottom:14px;
-}
-
-.note-row::-webkit-scrollbar{
-  height:6px;
-}
-.note-row::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,0.25);
-  border-radius:10px;
-}
-
-/* NOTE CARD */
-.note{
-  min-width:360px;
-  background:linear-gradient(180deg, #f8ecc6, var(--vanilla));
-  color:var(--violet);
-  padding:32px;
-  border-radius:32px;
-  box-shadow:
-    0 30px 90px rgba(0,0,0,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.7);
-  transition:all .45s cubic-bezier(.2,.8,.2,1);
-  position:relative;
-}
-
-.note:hover{
-  transform:translateY(-18px) scale(1.02);
-  box-shadow:
-    0 50px 160px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.85);
-}
-
-.note p{
-  line-height:1.8;
-  font-size:1.05rem;
-}
-
-/* +X INDICATOR */
-.more-indicator{
-  align-self:center;
-  font-family:'Caveat', cursive;
-  font-size:1.2rem;
-  color:var(--gold);
-}
-
-/* =====================
-   ROSE BUTTON
-===================== */
-.rose-btn{
-  position:fixed;
-  bottom:26px;
-  right:26px;
-  z-index:10;
-  padding:16px 22px;
-  border:none;
-  border-radius:999px;
-  font-family:'Caveat', cursive;
-  font-size:1.1rem;
-  color:#fff;
-  background:radial-gradient(circle at top left, #ff7ab6, var(--pink));
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.5),
-    0 0 0 rgba(255,122,182,0.7);
-  cursor:pointer;
-  transition:all .35s cubic-bezier(.2,.8,.2,1);
-}
-
-.rose-btn:hover{
-  transform:scale(1.15);
-  box-shadow:
-    0 30px 120px rgba(0,0,0,0.7),
-    0 0 40px rgba(255,122,182,0.7);
-}
-
-/* Ripple */
-.rose-btn:active::after{
-  content:"";
-  position:absolute;
-  inset:-10px;
-  border-radius:999px;
-  border:2px solid rgba(255,255,255,0.6);
-  animation:ripple .6s ease-out;
-}
-
-@keyframes ripple{
-  from{opacity:1; transform:scale(.8);}
-  to{opacity:0; transform:scale(1.4);}
-}
-</style>
+  <!-- CSS will be linked later -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<!-- ROSE MOTIF -->
-<svg class="rose-motif" viewBox="0 0 600 600">
-  <path d="M300 120 C220 80 140 140 180 240
-           C80 260 120 380 260 360
-           C280 440 420 440 440 340
-           C520 300 480 180 380 200
-           C360 120 300 120 300 120"
-        fill="none"
-        stroke="rgba(199,165,78,0.4)"
-        stroke-width="1.2"/>
-</svg>
+  <!-- =========================
+       BACKGROUND MOTIF LAYERS
+       (visual only, styled later)
+  ========================== -->
+  <div class="bg-layer motif-rose"></div>
+  <div class="bg-layer motif-saree"></div>
+  <div class="bg-layer grain-overlay"></div>
 
-<header>
-  <h1>Notes I Almost Sent</h1>
-  <p>Things I wanted to say, but never did.</p>
-</header>
+  <!-- =========================
+       HEADER / TITLE
+  ========================== -->
+  <header class="header">
+    <h1 class="site-title">Notes I Almost Sent</h1>
+    <p class="site-tagline">Things I wanted to say, but never did.</p>
+  </header>
 
-<section class="description">
-  <p>
-    This started quietly. Not as a confession, not as a plan — but as a place to
-    hold thoughts that kept returning. Some days it was one line. Some days it
-    was too much to fit into words. I didn’t want to send them. I didn’t want to
-    forget them either. So I kept them here — one day at a time.
-  </p>
-</section>
+  <!-- =========================
+       DESCRIPTION / ORIGIN STORY
+  ========================== -->
+  <section class="description">
+    <p>
+      This started quietly. Not as a confession, not as a plan —
+      but as a place to hold thoughts that kept returning.
+      Some days it was just one line, some days it was too much
+      to fit into words. I didn’t want to send them.
+      I didn’t want to forget them either.
+      So I kept them here — one day at a time.
+    </p>
+  </section>
 
-<section class="notes-wrapper">
+  <!-- =========================
+       NOTES STACK (SCROLL AREA)
+  ========================== -->
+  <main class="notes">
 
-  <div class="date-group">
-    <div class="date-title">Jan 20, 2026</div>
-    <div class="note-row">
-      <div class="note"><p>Today wasn’t special. But something about you crossed my mind quietly.</p></div>
-      <div class="note"><p>I don’t know why your smile stayed longer than the day itself.</p></div>
-      <div class="note"><p>Some feelings don’t ask permission. They just sit.</p></div>
-      <div class="more-indicator">+2</div>
-    </div>
-  </div>
+    <!-- ===== DATE GROUP ===== -->
+    <section class="date-group">
+      <div class="date-label">Jan 20, 2026</div>
 
-</section>
+      <!-- NOTE CARD -->
+      <article class="note-card">
+        <p class="note-text">
+          Today wasn’t special. But something about you
+          crossed my mind quietly.
+        </p>
 
-<button class="rose-btn" id="roseBtn">🌹 <span id="roseCount">0</span></button>
+        <!-- OPTIONAL MEDIA SLOT (music / image / video) -->
+        <div class="note-media">
+          <!-- example: audio, image, or video -->
+          <!-- filled later -->
+        </div>
 
-<script>
-let roses = localStorage.getItem("roses") || 0;
-const roseCount = document.getElementById("roseCount");
-roseCount.textContent = roses;
+        <!-- NOTE ACTIONS -->
+        <div class="note-actions">
+          <span class="note-saved">★ Saved</span>
+        </div>
+      </article>
 
-document.getElementById("roseBtn").addEventListener("click",()=>{
-  roses++;
-  localStorage.setItem("roses",roses);
-  roseCount.textContent = roses;
-});
-</script>
+      <!-- COLLAPSED MORE NOTES -->
+      <button class="more-notes-trigger">
+        +7 more notes from this day
+      </button>
+
+      <!-- SIDE STACK (hidden by default) -->
+      <div class="side-stack">
+        <article class="note-card mini">
+          <p class="note-text">
+            You smiled and I forgot what I was thinking.
+          </p>
+        </article>
+
+        <article class="note-card mini">
+          <p class="note-text">
+            Almost texted you. Didn’t.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== ANOTHER DATE GROUP (EXAMPLE) ===== -->
+    <section class="date-group">
+      <div class="date-label">Jan 18, 2026</div>
+
+      <article class="note-card">
+        <p class="note-text">
+          I heard a song today and it felt like you.
+        </p>
+
+        <div class="note-media">
+          <!-- audio slot -->
+        </div>
+
+        <div class="note-actions">
+          <span class="note-saved">★ Saved</span>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       DIGITAL ROSE TOGGLE
+  ========================== -->
+  <button class="rose-toggle" aria-label="Digital Roses">
+    🌹 <span class="rose-count">0</span>
+  </button>
+
+  <!-- =========================
+       SCRIPT (linked later)
+  ========================== -->
+  <script src="script.js"></script>
 
 </body>
 </html>
