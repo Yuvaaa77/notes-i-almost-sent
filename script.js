@@ -1,5 +1,5 @@
 /* -------------------------
-   NOTES DATA (EDIT HERE)
+   NOTES DATA
    ------------------------- */
 const notesData = [
   {
@@ -13,17 +13,11 @@ const notesData = [
     text: "I almost typed your name today. Almost.",
     image: "",
     audio: ""
-  },
-  {
-    date: "Jan 18, 2026",
-    text: "Some days are louder inside than outside.",
-    image: "",
-    audio: ""
   }
 ];
 
 /* -------------------------
-   GROUP NOTES BY DATE
+   GROUP BY DATE
    ------------------------- */
 const grouped = {};
 notesData.forEach(note => {
@@ -32,7 +26,7 @@ notesData.forEach(note => {
 });
 
 /* -------------------------
-   RENDER TIMELINE
+   RENDER NOTES
    ------------------------- */
 const timeline = document.getElementById("timeline");
 
@@ -47,26 +41,4 @@ Object.keys(grouped).forEach(date => {
         <div class="note">
           <div class="note-text">${n.text}</div>
           ${n.image ? `<img src="${n.image}">` : ""}
-          ${n.audio ? `<audio controls src="${n.audio}"></audio>` : ""}
-        </div>
-      `).join("")}
-    </div>
-  `;
-
-  timeline.appendChild(group);
-});
-
-/* -------------------------
-   DIGITAL ROSES (MANUAL)
-   ------------------------- */
-let roses = localStorage.getItem("roses");
-if (!roses) roses = 0;
-
-const roseCount = document.getElementById("roseCount");
-roseCount.textContent = roses;
-
-function addRose() {
-  roses++;
-  localStorage.setItem("roses", roses);
-  roseCount.textContent = roses;
-}
+          ${n.audio ? `<audio controls src="${n.audio}"></audio>` :
