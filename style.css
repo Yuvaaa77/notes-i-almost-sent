@@ -1,3 +1,12 @@
+:root {
+  --peacock-blue: #276DB6;
+  --vanilla: #F4E3B2;
+  --deep-violet: #602754;
+  --rani-pink: #C23377;
+  --antique-gold: #C7A54E;
+  --muted-teal: #43838B;
+}
+
 body {
   font-family: 'Georgia', serif;
   background: var(--peacock-blue);
