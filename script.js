@@ -1,36 +1,62 @@
-/* ===============================
+/* =====================================================
    DIGITAL ROSES SYSTEM
-================================ */
+===================================================== */
 
-const roseBtn = document.querySelector(".rose-btn");
-let roseCount = parseInt(localStorage.getItem("roseCount")) || 0;
+const roseToggle = document.querySelector(".rose-toggle");
+const roseCountEl = document.querySelector(".rose-count");
 
-// Update rose UI (number inside button if you add span later)
-function updateRose() {
-  localStorage.setItem("roseCount", roseCount);
+let roseCount = parseInt(localStorage.getItem("digitalRoses")) || 0;
+
+// initial render
+if (roseCountEl) {
+  roseCountEl.textContent = roseCount;
 }
 
-// On rose tap
-if (roseBtn) {
-  roseBtn.addEventListener("click", () => {
-    roseCount++;
-    updateRose();
+function saveRoses() {
+  localStorage.setItem("digitalRoses", roseCount);
+}
 
-    // Pulse animation
-    roseBtn.classList.remove("pulse");
-    void roseBtn.offsetWidth; // restart animation
-    roseBtn.classList.add("pulse");
+// rose click
+if (roseToggle) {
+  roseToggle.addEventListener("click", () => {
+    roseCount++;
+    saveRoses();
+
+    // update UI
+    if (roseCountEl) {
+      roseCountEl.textContent = roseCount;
+    }
+
+    // pulse animation
+    roseToggle.classList.remove("pulse");
+    void roseToggle.offsetWidth;
+    roseToggle.classList.add("pulse");
+
+    // micro float effect
+    roseToggle.animate(
+      [
+        { transform: "translateY(0)" },
+        { transform: "translateY(-6px)" },
+        { transform: "translateY(0)" }
+      ],
+      {
+        duration: 500,
+        easing: "ease-out"
+      }
+    );
   });
 }
 
-/* ===============================
-   SCROLL REVEAL (NOTES)
-================================ */
+/* =====================================================
+   SCROLL REVEAL — NOTES / SECTIONS
+===================================================== */
 
-const revealElements = document.querySelectorAll(".note, .date-group, .description");
+const revealTargets = document.querySelectorAll(
+  ".note-card, .description, .date-group"
+);
 
 const revealObserver = new IntersectionObserver(
-  entries => {
+  (entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
@@ -44,21 +70,60 @@ const revealObserver = new IntersectionObserver(
   }
 );
 
-revealElements.forEach(el => {
+revealTargets.forEach(el => {
   el.classList.add("reveal");
   revealObserver.observe(el);
 });
 
-/* ===============================
-   SMOOTH HOVER POLISH (OPTIONAL)
-================================ */
+/* =====================================================
+   +7 MORE NOTES — SIDE STACK TOGGLE
+===================================================== */
 
-// Prevent hover jitter on mobile
-let lastTouch = 0;
+const moreButtons = document.querySelectorAll(".more-notes-trigger");
+
+moreButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const group = btn.closest(".date-group");
+    const sideStack = group.querySelector(".side-stack");
+
+    if (!sideStack) return;
+
+    const isOpen = sideStack.classList.contains("open");
+
+    if (isOpen) {
+      sideStack.classList.remove("open");
+      btn.textContent = btn.textContent.replace("Hide", "+");
+    } else {
+      sideStack.classList.add("open");
+      btn.textContent = "Hide extra notes";
+    }
+  });
+});
+
+/* =====================================================
+   MOBILE HOVER SAFETY
+===================================================== */
+
+let lastTouchTime = 0;
+
 document.addEventListener("touchstart", () => {
-  lastTouch = Date.now();
+  lastTouchTime = Date.now();
 });
 
 document.addEventListener("mousemove", () => {
-  if (Date.now() - lastTouch < 500) return;
+  if (Date.now() - lastTouchTime < 600) return;
 });
+
+/* =====================================================
+   FUTURE EXTENSION HOOKS (DO NOT DELETE)
+===================================================== */
+
+// music sync hook
+window.syncNoteMedia = function(noteEl, mediaEl) {
+  // placeholder for future audio/image pairing
+};
+
+// rose meaning hook
+window.onRoseAdded = function(count) {
+  // future emotional logic
+};
