@@ -57,3 +57,7 @@ function closePopup() {
 window.onload = () => {
   document.getElementById("popup").classList.remove("hidden");
 };
+const roseCountEl = document.getElementById("roseCount");
+if (roseCountEl) {
+  roseCountEl.textContent = notesData.length;
+}
