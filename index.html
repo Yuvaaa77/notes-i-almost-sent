@@ -2,121 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Notes I Almost Sent</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes I Almost Sent</title>
 
-  <!-- Font pairing you approved -->
-  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Playfair+Display:ital,wght@0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Fonts (locked pairing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
 
   <!-- =========================
-       HEADER
-  ========================== -->
-  <header class="header">
-    <h1 class="site-title">Notes I Almost Sent</h1>
-    <p class="site-tagline">Things I wanted to say, but never did.</p>
-  </header>
+       PAGE CONTAINER
+       ========================= -->
+  <main class="page">
 
-  <!-- =========================
-       DESCRIPTION / ORIGIN
-  ========================== -->
-  <section class="description">
-    <p>
-      This started quietly. Not as a confession, not as a plan —
-      but as a place to hold thoughts that kept returning.
-      Some days it was just one line, some days it was too much
-      to fit into words. I didn’t want to send them.
-      I didn’t want to forget them either.
-      So I kept them here — one day at a time.
-    </p>
-  </section>
+    <!-- =========================
+         HEADER
+         ========================= -->
+    <header>
+      <h1 class="site-title">Notes I Almost Sent</h1>
+      <p class="site-tagline">Things I wanted to say, but never did.</p>
+    </header>
 
-  <!-- =========================
-       NOTES AREA
-  ========================== -->
-  <main class="notes">
+    <!-- =========================
+         INTRO / DESCRIPTION
+         ========================= -->
+    <section class="intro-card">
+      <p>
+        This started quietly. Not as a confession, not as a plan —
+        but as a place to hold thoughts that kept returning.
+        Some days it was just one line, some days it was too much
+        to fit into words. I didn’t want to send them.
+        I didn’t want to forget them either.
+        So I kept them here — one day at a time.
+      </p>
+    </section>
 
-    <!-- ===== DATE GROUP ===== -->
-    <section class="date-group">
+    <!-- =========================
+         NOTES STACK (VERTICAL BY DATE)
+         ========================= -->
+    <section class="notes-stack">
 
-      <div class="date-label">Jan 20, 2026</div>
+      <!-- ===== DATE GROUP ===== -->
+      <section class="date-group" data-date="2026-01-20">
 
-      <!-- SIDEWAYS STACK -->
-      <div class="notes-row">
-
-        <!-- MAIN NOTE -->
-        <article class="note-card">
-          <p class="note-text">
+        <!-- MAIN NOTE (VISIBLE) -->
+        <article class="note-card main-note">
+          <div class="note-date">Jan 20, 2026</div>
+          <div class="note-text">
             Today wasn’t special. But something about you crossed my mind quietly.
-          </p>
+          </div>
+
+          <div class="note-actions">
+            <span class="saved-chip">★ Saved</span>
+          </div>
         </article>
 
-        <!-- SAME DAY NOTE -->
-        <article class="note-card">
-          <p class="note-text">
-            I almost typed your name and stopped.
-          </p>
-        </article>
+        <!-- +X MORE NOTES (DYNAMIC COUNT) -->
+        <div class="more-notes">
+          +<span class="more-count"></span> more notes written this day
+        </div>
 
-        <!-- SAME DAY NOTE -->
-        <article class="note-card">
-          <p class="note-text">
-            The day moved on. This thought didn’t.
-          </p>
-        </article>
+        <!-- SIDE STACK (ALL EXTRA NOTES OF SAME DAY) -->
+        <div class="side-stack">
 
-      </div>
+          <article class="note-card">
+            <div class="note-text">
+              I almost typed your name and stopped myself.
+            </div>
+          </article>
 
-      <!-- +X INDICATOR (EXAMPLE ONLY) -->
-      <button class="more-notes-trigger">
-        +7 more notes from this day
-      </button>
+          <article class="note-card">
+            <div class="note-text">
+              The day moved on, this thought didn’t.
+            </div>
+          </article>
 
-    </section>
+          <article class="note-card">
+            <div class="note-text">
+              A song reminded me of you again.
+            </div>
+          </article>
 
-    <!-- ===== ANOTHER DATE GROUP ===== -->
-    <section class="date-group">
+        </div>
+      </section>
 
-      <div class="date-label">Jan 18, 2026</div>
+      <!-- ===== ANOTHER DATE GROUP ===== -->
+      <section class="date-group" data-date="2026-01-18">
 
-      <div class="notes-row">
-
-        <article class="note-card">
-          <p class="note-text">
-            A song reminded me of you and I didn’t skip it.
-          </p>
-        </article>
-
-        <article class="note-card">
-          <p class="note-text">
+        <article class="note-card main-note">
+          <div class="note-date">Jan 18, 2026</div>
+          <div class="note-text">
             Some feelings don’t need replies.
-          </p>
+          </div>
         </article>
 
-      </div>
+        <div class="more-notes">
+          +<span class="more-count"></span> more notes written this day
+        </div>
 
-      <button class="more-notes-trigger">
-        +3 more notes from this day
-      </button>
+        <div class="side-stack">
+
+          <article class="note-card">
+            <div class="note-text">
+              I didn’t skip the song this time.
+            </div>
+          </article>
+
+        </div>
+      </section>
 
     </section>
-
   </main>
 
   <!-- =========================
-       DIGITAL ROSE TOGGLE
-  ========================== -->
-  <button class="rose-toggle" aria-label="Digital Roses">
+       FLOATING ROSE TOGGLE
+       ========================= -->
+  <button class="rose-toggle" aria-label="Digital roses">
     🌹 <span class="rose-count">0</span>
   </button>
 
   <!-- =========================
        SCRIPT
-  ========================== -->
+       ========================= -->
   <script src="script.js"></script>
 
 </body>
