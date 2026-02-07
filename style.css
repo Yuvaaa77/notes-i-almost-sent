@@ -1,6 +1,3 @@
-/* =====================
-   COLOR PALETTE
-   ===================== */
 :root {
   --peacock-blue: #276DB6;
   --vanilla: #F4E3B2;
@@ -10,144 +7,65 @@
   --muted-teal: #43838B;
 }
 
-/* =====================
-   RESET
-   ===================== */
+/* RESET */
 * {
   box-sizing: border-box;
 }
 
+/* BODY */
 body {
   margin: 0;
   padding: 72px 20px;
   font-family: 'Lora', serif;
-  color: var(--deep-violet);
   background: var(--peacock-blue);
-  min-height: 100vh;
+  color: var(--deep-violet);
   overflow-x: hidden;
 }
 
-/* =====================
-   BACKGROUND SCENE
-   ===================== */
+/* BACKGROUND SCENE */
 .scene {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-
-  background-image:
-    radial-gradient(circle at 15% 20%, rgba(199,165,78,0.12), transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(194,51,119,0.10), transparent 50%);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(199,165,78,0.18), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(194,51,119,0.14), transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.025),
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 6px
+    );
 }
 
-/* =====================
-   LAYOUT
-   ===================== */
+/* LAYOUT */
 main {
   position: relative;
   z-index: 2;
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin: auto;
 }
 
-/* =====================
-   HEADER
-   ===================== */
+/* HEADER */
 .site-header {
-  text-align: center;
-  margin-bottom: 64px;
+  background: rgba(39,109,182,0.55);
+  backdrop-filter: blur(10px);
+  padding: 32px;
+  border-radius: 28px;
+  margin-bottom: 80px;
 }
 
 h1 {
   font-family: 'Caveat', cursive;
   font-size: 3.4rem;
-  font-weight: 500;
   color: var(--antique-gold);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
-.tagline {
-  font-size: 0.95rem;
+.description {
   font-style: italic;
-  color: var(--muted-teal);
-}
-
-/* =====================
-   CARD FRAME
-   ===================== */
-.card-frame {
-  padding: 6px;
-  border-radius: 40px;
-  background: linear-gradient(
-    135deg,
-    var(--antique-gold),
-    rgba(199,165,78,0.4)
-  );
-  box-shadow: 0 40px 120px rgba(0,0,0,0.35);
-}
-
-/* =====================
-   NOTE
-   ===================== */
-.note {
-  background: linear-gradient(
-    180deg,
-    rgba(244,227,178,0.98),
-    rgba(244,227,178,0.92)
-  );
-
-  padding: 42px 38px;
-  border-radius: 34px;
-  position: relative;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.6),
-    0 30px 80px rgba(0,0,0,0.25);
-}
-
-/* =====================
-   NOTE DETAILS
-   ===================== */
-.note-date {
-  font-family: 'Caveat', cursive;
   font-size: 1rem;
-  color: var(--muted-teal);
-  margin-bottom: 18px;
-}
-
-.note-text {
-  font-size: 1.1rem;
-  line-height: 1.9;
-  margin-bottom: 28px;
-}
-
-/* =====================
-   SAVE BUTTON (2026)
-   ===================== */
-.save-btn {
-  font-family: 'Caveat', cursive;
-  font-size: 0.95rem;
-  padding: 6px 18px;
-  border-radius: 999px;
-  border: none;
-  cursor: default;
-
-  background: rgba(194,51,119,0.25);
-  color: var(--rani-pink);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.6),
-    0 8px 22px rgba(0,0,0,0.25);
-}
-
-/* =====================
-   ROSE COUNTER
-   ===================== */
-.rose-counter {
-  margin-top: 60px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--antique-gold);
-  opacity: 0.95;
-}
+  line-height: 1.8;
+  color: #
