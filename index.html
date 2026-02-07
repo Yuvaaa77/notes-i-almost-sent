@@ -6,38 +6,25 @@
   <title>Notes I Almost Sent</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Background motifs -->
-  <div class="scene"></div>
+  <!-- BACKGROUND LAYERS -->
+  <div class="bg-fabric"></div>
+  <div class="bg-motifs"></div>
 
-  <!-- Rose toggle -->
-  <button class="rose-btn" onclick="addRose()">🌹 0</button>
+  <!-- ROSE TOGGLE -->
+  <button class="rose-toggle" onclick="addRose()">
+    <span class="rose-icon">🌹</span>
+    <span class="rose-count">0</span>
+  </button>
 
-  <main>
+  <!-- CONTENT WILL COME LATER -->
+  <main></main>
 
-    <!-- Header -->
-    <header class="site-header">
-      <h1>Notes I Almost Sent</h1>
-      <p class="description">
-        This started quietly. Not as a confession, not as a plan — but as a place to
-        hold thoughts that kept returning. Some days it was just one line, some days
-        it was too much to fit into words. I didn’t want to send them. I didn’t want
-        to forget them either. So I kept them here — one day at a time.
-      </p>
-    </header>
-
-    <!-- Timeline (JS injects notes here) -->
-    <section id="timeline"></section>
-
-  </main>
-
-  <!-- Logic -->
   <script src="script.js"></script>
 </body>
 </html>
